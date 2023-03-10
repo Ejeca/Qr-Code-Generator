@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleQr.css"> 
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  </head>
+  <body onload="checkLogin()">
+    <div class="text-c">
+      <h1>QR Code Generator</h1>
+    </div>
+    <input class="input-text Card CardInner" type="text" id="input-text" placeholder="Enter text or URL">
+    <div class="frame">
+      <a href="#" class="btn">
+        <i onclick="generateQRCode()" class="fas fa-play"></i>
+      </a>
+    </div>
+    <br><br>
+    <canvas id="qr-code" style="display:none;"></canvas>
+
+
+
+
+    
+    <script>
+function checkLogin() {
+  if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "Log In Page.html"; // Replace "login.html" with the URL of your login page
+  }
+}
+
+
+
+      function generateQRCode() {
+        var qr = new QRious({
+          element: document.getElementById('qr-code'),
+          value: document.getElementById('input-text').value,
+          size: 200
+        });
+        document.getElementById('qr-code').style.display = "block";
+      }
+    </script>
+    
+  </body>
+</html>
